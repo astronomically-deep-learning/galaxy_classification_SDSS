@@ -1,0 +1,22 @@
+until myserver; do
+
+    python2 query-galaxyZoo-SDSS-centered_v2.py
+
+    echo "|\n|\n"
+    echo "Connection crashed with exit code $?" >&2
+
+    sleep 1
+
+    # Removing tmp folder in case crash happens before the script can delete it
+    # (e.g. server disconnection)
+
+    echo "Removing ~/.astropy/cache/download/py2 folder" >&2
+    rm -rf ~/.astropy/cache/download/py2
+
+    echo "|\n|\n"
+    echo "Restarting .." >&2
+    echo "|\n|\n"
+
+    sleep 1
+
+done
