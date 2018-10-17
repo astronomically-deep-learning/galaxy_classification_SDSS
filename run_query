@@ -1,5 +1,0 @@
-until myserver; do
-    python2 query-galaxyZoo-SDSS-centered_v2.py
-    echo "\nConnection crashed with exit code $?.  Respawning..\n" >&2
-    sleep 1
-done
